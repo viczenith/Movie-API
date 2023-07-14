@@ -1,0 +1,47 @@
+Pseudo Code aand FlowChat For API Project. (2b13b7710d69130b43a1a13742a2b60e)
+
+1. Create an HTML CSS file for your work. More rundown details on these. But letst focus on the JS part of this project.
+
+2. JS file
+i. create variables to hold your API links and paths values. eg
+(const APILINK
+const IMG_PATH
+const SEARCHAPI)
+
+ii. Pull all ids in the HTML
+iii. create a function called muviehub(url) with parameter url;
+iv. fetch the api from the api link that will be set as argument with the use of fetch().then(res=>res.json())
+v. use the .then() fetch method to create a nested function that will take the api data as its parameter. eg. 
+.then(function(data){})
+vi. console the data.result to check if your work is being fetched.
+vii. create a forEach loop on the data.result to loop through the api data with an element as its arguement. eg.
+data.results.forEach(element =>{})
+viii. in vii above, create all the html containers and tags accordingly by using (document.createElement) and set their 
+attributes accordingly. eg. (const div_card = document.createElement('div');
+			div_card.setAttribute('class', 'card');)
+xv. Use the string literal and jquery interporation to assign the dynamic title to the title tag using innerHTML eg.
+title.innerHTML = `${element.title}`;
+x. do same with the img tag, but its a bit different becaouse img src is being targeted eg. 
+image.src = IMG_PATH + element.poster_path;
+xi. Arrange your created tags and containers as they should be, using the appendChild. eg.
+center.appendChild(image);
+			div_card.appendChild(center);
+xii. address the form ie. the search bar. by using the addeventlistener. eg. 
+form.addEventListener("submit", (e)=>{
+	e.preventDefault();
+	main.innerHTML = '';
+
+	const searchItem = search.value;
+
+	if(searchItem){
+		muviehub(SEARCHAPI + searchItem);
+		search.value = "";
+	}
+});
+
+xiii. call your main function with the apilink as the arguement.
+
+
+APILINK = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=[YOUR API LINK]&page=1';
+IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=[YOUR API LINK]&query=";
